@@ -1,7 +1,7 @@
 # HealthCatalystDemo
 People Search Application Demo for Health Catalyst
 
-To run the demo, please do the following after importing the project:
+To run the demo, please do the following after importing the project and running nuget restore as necessary:
 
 1) Create and populate the database using the T-SQL scripts DBCreate.sql and PopulateDB.sql under /SQL directory.
 
