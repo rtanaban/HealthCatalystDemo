@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HealthCatalystDemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Interests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Interest" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persons">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="State" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Zip" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Birthday" Type="date" Nullable="false" />
+    <Property Name="PictureUrl" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonsInterests">
+    <Key>
+      <PropertyRef Name="PersonId" />
+      <PropertyRef Name="InterestId" />
+    </Key>
+    <Property Name="PersonId" Type="int" Nullable="false" />
+    <Property Name="InterestId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PersonsInterests_Interests">
+    <End Role="Interests" Type="Self.Interests" Multiplicity="1" />
+    <End Role="PersonsInterests" Type="Self.PersonsInterests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonsInterests">
+        <PropertyRef Name="InterestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonsInterests_Persons">
+    <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
+    <End Role="PersonsInterests" Type="Self.PersonsInterests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persons">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PersonsInterests">
+        <PropertyRef Name="PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HealthCatalystDemoModelStoreContainer">
+    <EntitySet Name="Interests" EntityType="Self.Interests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persons" EntityType="Self.Persons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonsInterests" EntityType="Self.PersonsInterests" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PersonsInterests_Interests" Association="Self.FK_PersonsInterests_Interests">
+      <End Role="Interests" EntitySet="Interests" />
+      <End Role="PersonsInterests" EntitySet="PersonsInterests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonsInterests_Persons" Association="Self.FK_PersonsInterests_Persons">
+      <End Role="Persons" EntitySet="Persons" />
+      <End Role="PersonsInterests" EntitySet="PersonsInterests" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

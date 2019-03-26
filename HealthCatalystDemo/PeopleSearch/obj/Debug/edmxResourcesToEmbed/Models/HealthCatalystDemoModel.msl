@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HealthCatalystDemoModelStoreContainer" CdmEntityContainer="HealthCatalystDemoEntities">
+    <EntitySetMapping Name="Interests">
+      <EntityTypeMapping TypeName="HealthCatalystDemoModel.Interest">
+        <MappingFragment StoreEntitySet="Interests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Interest1" ColumnName="Interest" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persons">
+      <EntityTypeMapping TypeName="HealthCatalystDemoModel.Person">
+        <MappingFragment StoreEntitySet="Persons">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PersonsInterests" TypeName="HealthCatalystDemoModel.PersonsInterests" StoreEntitySet="PersonsInterests">
+      <EndProperty Name="Interests">
+        <ScalarProperty Name="Id" ColumnName="InterestId" />
+      </EndProperty>
+      <EndProperty Name="Persons">
+        <ScalarProperty Name="Id" ColumnName="PersonId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
