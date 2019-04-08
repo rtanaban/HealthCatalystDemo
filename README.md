@@ -1,5 +1,4 @@
-# HealthCatalystDemo
-People Search Application Demo for Health Catalyst
+People Search Application (Demo with ASP.NET, C#, SQL Server, React).
 
 To run the demo, please do the following after importing the project and running nuget restore as necessary:
 
